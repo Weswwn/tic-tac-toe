@@ -15,7 +15,6 @@ const ButtonStyle = styled.button`
   background-color: #FFA6C9;
   font-weight: bold;
   color: white;
-
   &:hover {
     color: red; // <Thing> when hovered
     cursor: pointer;
@@ -59,6 +58,7 @@ class Board extends React.Component {
        winFound = true;
     }
 
+    //Check for tie condition
     let count = 0;
     board.forEach(tile => tile !== 0 ? count++ : count);
     if (count === 9 && winFound === false) {
@@ -95,13 +95,13 @@ class Board extends React.Component {
       <div>
         <BoardStyle>
           <div className="board-column-1">
-            {board.slice(0,3).map((tile) => <Tile id={count++} click={this.tileClick} tileStatus={tile} key={count} />)}
+            {board.slice(0,3).map((tile) => <Tile id={count++} tileClick={this.tileClick} tileStatus={tile} key={count} />)}
           </div>
           <div className="board-column-2">
-            {board.slice(3,6).map((tile) => <Tile id={count++} click={this.tileClick} tileStatus={tile} key={count} />)} 
+            {board.slice(3,6).map((tile) => <Tile id={count++} tileClick={this.tileClick} tileStatus={tile} key={count} />)} 
           </div>
           <div className="board-column-3">
-            {board.slice(6,9).map((tile) => <Tile id={count++} click={this.tileClick} tileStatus={tile} key={count} />)}
+            {board.slice(6,9).map((tile) => <Tile id={count++} tileClick={this.tileClick} tileStatus={tile} key={count} />)}
           </div>
         </BoardStyle>
         <div>

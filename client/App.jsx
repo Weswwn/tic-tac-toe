@@ -2,7 +2,7 @@ import React from 'react';
 import Board from './components/Board.jsx';
 import styled from 'styled-components';
 
-const Panel = styled.div`
+const PanelStyle = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: -50px;
@@ -79,9 +79,9 @@ class App extends React.Component {
         <StateStyle>
         {winState === true ? `${currPlayer === 'X' ? 'Y' : 'X'} Won!` : winState === 'tie' ? 'You Tied!' : `Current Player: ${currPlayer}`}
         </StateStyle>
-        <Panel>
+        <PanelStyle>
           <Board winCondition={this.winCondition} winState={winState} changeCurrPlayer={this.changeCurrPlayer} currPlayer={currPlayer}/>
-        </Panel>
+        </PanelStyle>
       </Main>
     )
   }

@@ -17,13 +17,12 @@ const TileStyle = styled.div`
 class Tile extends React.Component {
   constructor(props) {
     super(props)
-
     this.onClick = this.onClick.bind(this);
   }
 
   onClick() {
-    const { click, id} = this.props;
-    click(id);
+    const { tileClick, id} = this.props;
+    tileClick(id);
   }
 
   render() {
