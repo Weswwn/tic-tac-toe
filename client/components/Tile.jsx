@@ -4,10 +4,14 @@ import styled from 'styled-components';
 const TileStyle = styled.div`
   height: 100px;
   width: 100px;
-  border: 1px solid black;
+  border: 1px solid palevioletred;
   text-align: center;
   vertical-align: middle;
   line-height: 90px;
+  background-color: #FFA6C9;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
 `
 
 class Tile extends React.Component {

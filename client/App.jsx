@@ -11,6 +11,9 @@ const ScoreBoard = styled.div`
   margin-left: 50px;
   display: flex;
   flex-direction: column;
+  font-weight: bold;
+  font-size: 2em;
+  color: #FFA6C9;
 `
 
 class App extends React.Component {
