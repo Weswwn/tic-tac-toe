@@ -21,9 +21,6 @@ const ButtonStyle = styled.button`
     cursor: pointer;
   }
 `
-const Main = styled.div`
-  float: left;
-`
 
 class Board extends React.Component {
   constructor(props) {
@@ -39,10 +36,12 @@ class Board extends React.Component {
   checkWinCondition() {
     const { winCondition } = this.props;
     const { board } = this.state;
+    let winFound = false;
     if ((board[0] === board[1] && board[0] === board[2] && board[0] !== 0) || 
       (board[3] === board[4] && board[3] === board[5] && board[3] !== 0) || 
       (board[6] === board[7] && board[6] === board[8] && board[6] !== 0)) {
         winCondition();
+        winFound = true;
     }
 
     if ((board[0] === board[3] && board[3] === board[6] && board[0] !== 0) ||
@@ -50,17 +49,19 @@ class Board extends React.Component {
       (board[2] === board[5] && board[5] === board[8] && board[2] !== 0)) {
         // At least one horizontal is good
         winCondition();
+        winFound = true;
     }
 
     if ((board[0] === board[4] && board[4] === board[8] && board[0] !== 0) ||
       (board[2] === board[4] && board[4] === board[6] && board[2] !== 0)) {
        // At least one diagonal is good
        winCondition();
+       winFound = true;
     }
 
     let count = 0;
     board.forEach(tile => tile !== 0 ? count++ : count);
-    if (count === 9) {
+    if (count === 9 && winFound === false) {
       winCondition('tie');
     }
   }
@@ -103,10 +104,10 @@ class Board extends React.Component {
             {board.slice(6,9).map((tile) => <Tile id={count++} click={this.tileClick} tileStatus={tile} key={count} />)}
           </div>
         </BoardStyle>
-        <Main>
+        <div>
           {winState ? <ButtonStyle onClick={this.resetBoard}>Play Again!</ButtonStyle> : winState === 'tie' ? 
           <ButtonStyle onClick={this.resetBoard}>Play Again!</ButtonStyle> : null}
-        </Main>
+        </div>
       </div>
     )
   }

@@ -36,8 +36,6 @@ class App extends React.Component {
     this.state = {
       currPlayer: null,
       winState: false,
-      player1: 0,
-      player2: 0
     }
     this.changeCurrPlayer = this.changeCurrPlayer.bind(this);
     this.winCondition = this.winCondition.bind(this);
