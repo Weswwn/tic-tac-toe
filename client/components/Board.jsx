@@ -4,9 +4,8 @@ import styled from 'styled-components';
 
 const BoardStyle = styled.div`
   display: flex;
-  flex-direction: row;
+  width: 70%;
 `
-
 const ButtonStyle = styled.button`
   font-size: 1em;
   margin: 1em;
@@ -22,6 +21,10 @@ const ButtonStyle = styled.button`
     cursor: pointer;
   }
 `
+const Main = styled.div`
+  float: left;
+`
+
 class Board extends React.Component {
   constructor(props) {
     super(props)
@@ -100,8 +103,10 @@ class Board extends React.Component {
             {board.slice(6,9).map((tile) => <Tile id={count++} click={this.tileClick} tileStatus={tile} key={count} />)}
           </div>
         </BoardStyle>
-        {winState ? <ButtonStyle onClick={this.resetBoard}>Play Again!</ButtonStyle> : winState === 'tie' ? 
-        <ButtonStyle onClick={this.resetBoard}>Play Again!</ButtonStyle> : null}
+        <Main>
+          {winState ? <ButtonStyle onClick={this.resetBoard}>Play Again!</ButtonStyle> : winState === 'tie' ? 
+          <ButtonStyle onClick={this.resetBoard}>Play Again!</ButtonStyle> : null}
+        </Main>
       </div>
     )
   }

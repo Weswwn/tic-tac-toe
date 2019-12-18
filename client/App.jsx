@@ -5,15 +5,29 @@ import styled from 'styled-components';
 const Panel = styled.div`
   display: flex;
   flex-direction: row;
+  margin-left: -50px;
 `
-
-const ScoreBoard = styled.div`
-  margin-left: 50px;
+const StateStyle = styled.div`
   display: flex;
   flex-direction: column;
   font-weight: bold;
   font-size: 2em;
-  color: #FFA6C9;
+  color: palevioletred;
+  text-shadow: -1px 0 #FFA6C9, 0 1px #FFA6C9, 1px 0 #FFA6C9, 0 -1px #FFA6C9;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  width: 200px;
+  height: 150px;
+`
+const Main = styled.div`
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-top: 25px;
+  width: 200px; 
 `
 
 class App extends React.Component {
@@ -63,16 +77,14 @@ class App extends React.Component {
   render() {
     const { currPlayer, winState} = this.state;
     return (
-      <div>
-
-        Current Player: {currPlayer}
+      <Main>
+        <StateStyle>
+        {winState === true ? `${currPlayer === 'X' ? 'Y' : 'X'} Won!` : winState === 'tie' ? 'You Tied!' : `Current Player: ${currPlayer}`}
+        </StateStyle>
         <Panel>
-        <Board winCondition={this.winCondition} winState={winState} changeCurrPlayer={this.changeCurrPlayer} currPlayer={currPlayer}/>
-        <ScoreBoard>
-          {winState === true ? `${currPlayer === 'X' ? 'Y' : 'X'} Won!` : winState === 'tie' ? 'YOU TIED!!' : null}
-        </ScoreBoard>
+          <Board winCondition={this.winCondition} winState={winState} changeCurrPlayer={this.changeCurrPlayer} currPlayer={currPlayer}/>
         </Panel>
-      </div>
+      </Main>
     )
   }
 }
