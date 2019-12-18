@@ -1,4 +1,4 @@
-# tic-tac-toe
+# Tic Tac Toe
 
 ##Constraints
 1. Upon initial page render, the player who starts is randomly generated
