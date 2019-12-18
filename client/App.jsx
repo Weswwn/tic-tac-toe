@@ -5,8 +5,11 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currPlayer: null
+      currPlayer: null,
+      winState: false
     }
+    this.changeCurrPlayer = this.changeCurrPlayer.bind(this);
+    this.winCondition = this.winCondition.bind(this);
   }
 
   componentDidMount() {
@@ -16,10 +19,39 @@ class App extends React.Component {
     })
   }
 
+  changeCurrPlayer() {
+    if (this.state.currPlayer === 'X') {
+      this.setState({
+        currPlayer: 'Y'
+      })
+    } else {
+      this.setState({
+        currPlayer: 'X'
+      })
+    }
+  }
+
+  winCondition(checkTie) {
+    if (checkTie) {
+      this.setState({
+        winState: 'tie'
+      })
+    } else {
+      this.setState(prevState => ({
+        winState: !prevState.winState
+      }))
+    }
+  }
+
   render() {
+    const { currPlayer, winState } = this.state;
     return (
       <div>
-        <Board />
+        <div>
+          {winState === true ? `${currPlayer === 'X' ? 'Y' : 'X'} Won!` : winState === 'tie' ? 'YOU TIED!!' : null}
+        </div>
+        Current Player: {currPlayer}
+        <Board winCondition={this.winCondition} winState={winState} changeCurrPlayer={this.changeCurrPlayer} currPlayer={currPlayer}/>
       </div>
     )
   }
